@@ -1,4 +1,6 @@
 #include "Carte.h";
+#include <iostream>
+#include <cstdlib>
 
 Carte* Carte::headN = NULL;
 Carte* Carte::headS = NULL;
@@ -8,27 +10,40 @@ Carte* Carte::bottomS = NULL;
 // constructor
 Carte::Carte(Couleur coul, Valeur val, const char prop) : couleur(coul), valeur(val), proprietaire(prop)
 	{
-	switch (prop)
-	{
-	case 'N':
-		if (headN == NULL){ bottomN = this;  }
-		next = headN;
-		headN = this;
-		break;
+		switch (prop)
+		{
+		case 'N':
+			if (headN == NULL){ bottomN = this;  }
+			next = headN;
+			headN = this;
+			break;
 
-	case 'S':
-		if (headS == NULL){ bottomS = this; }
-		next = headS;
-		headS = this;
-		break;
+		case 'S':
+			if (headS == NULL){ bottomS = this; }
+			next = headS;
+			headS = this;
+			break;
 		
-	default:
-		break;
+		default:
+			
+			break;
+		}
 	}
-	};
+
+
+void affiche(Couleur c){
+	char const* txt[] = { "bleu", "rouge", "vert", "noir" };
+	std::cout << txt[c];
+}
+
 
 	// displays nord's initial hand
-	void static afficherN(){}
+	void Carte::afficherN(){
+		Carte &current_card = *headN;
+		while (current_card.next != NULL){
+			std::cout << 
+		}
+	}
 
 	// displays south's initial hand
 	void static afficherS(){}

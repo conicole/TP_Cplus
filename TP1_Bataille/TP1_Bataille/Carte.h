@@ -33,6 +33,13 @@ class Carte
 		// constructor
 		Carte(Couleur coul, Valeur val, const char proprietaire);
 
+		Carte static getHeadN();
+
+		Carte static getHeadS();
+
+		Carte getNext();
+
+
 		// displays nord's initial hand
 		void static afficherN();
 
