@@ -1,16 +1,16 @@
 
-#include <list>
+#include <cstdlib>
 
 // enum of Colors
 enum Couleur
 {
-	Pique, Trefle, Coeur, Carreau
+	Pique=1, Trefle, Coeur, Carreau
 };
 
 // enum of Values
 enum Valeur
 {
-	As, Deux, Trois, Quatre, Cinq, Six, Sept, Huit, Neuf, Dix, Valet, Dame, Roi
+	As=1, Deux, Trois, Quatre, Cinq, Six, Sept, Huit, Neuf, Dix, Valet, Dame, Roi
 };
 
 class Carte
@@ -37,9 +37,6 @@ class Carte
 
 		Carte static getHeadS();
 
-		Carte getNext();
-
-
 		// displays nord's initial hand
 		void static afficherN();
 
@@ -55,7 +52,7 @@ class Carte
 		// displays the card
 		void afficher();
 
-		// returns true if the two cards are identical
+		// returns true if the two card have the same value.
 		bool egale(Carte otherCard);
 
 		// returns the next card.
@@ -64,10 +61,15 @@ class Carte
 		// changes the owner
 		void changerProp();
 
-		// wut
+		// return true if the current card won against St
 		bool supAbs(Carte St);
 
-		// 
-		void passerDerriere();
+		// send the current card to the bottom of the stack.
+	    void passerDerriere();
 
+		// changes the value color to String (to display) 
+		char const* colorToString();
+
+		// changes the value value to String (to display )
+		char const* valueToString();
 };

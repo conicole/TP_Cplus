@@ -30,4 +30,12 @@
       <Filter>Fichiers sources</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\C++\Save cplusplus\donnees1.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+    <Text Include="..\..\..\C++\Save cplusplus\resultat_donnees1.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

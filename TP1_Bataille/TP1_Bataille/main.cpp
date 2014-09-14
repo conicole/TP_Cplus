@@ -35,6 +35,7 @@ int main()
             Couleur couleur = static_cast<Couleur>(icoul + 1);
             Valeur valeur = static_cast<Valeur>(ihaut + 1);
 
+			
             // Attention : le constructeur doit enchainer la Carte avec la
             // bonne liste.
             //
@@ -52,7 +53,7 @@ int main()
     std::cout << "Paquet de S :" << std::endl;
     Carte::afficherS();   
     std::cout << std::endl;
-
+	
     // Boucle principale : le jeu est termine, si une des listes est vide.
     std::cout << "Boucle principale" << std::endl;
     while(Carte::getNTete() != 0 && Carte::getSTete() != 0)
