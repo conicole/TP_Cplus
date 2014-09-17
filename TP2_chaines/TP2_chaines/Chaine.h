@@ -12,8 +12,12 @@ public:
 
 	// constructors
 	Chaine();					
-	Chaine(const char * c);		
-	Chaine(const chaine &c);
+	Chaine(const char* c);		
+	Chaine(const Chaine& c);
 
-	
+	// toString
+	void display();
+
+	// destructor
+	~Chaine();
 };
