@@ -1,5 +1,5 @@
 /**
-*
+* it's ok
 */
 
 #include "Chaine.h"
