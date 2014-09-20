@@ -2,24 +2,23 @@
 #include <iostream>
 #include <cstdlib>
 
-int Chaine::cpt = 0;
 
+// empty constructor
 Chaine::Chaine()
 {
 	tank = new char[1];
 	tank[0] = '\0';
 
-	std::cout << "Construction of chaine number " << cpt << " done successfuly " << std::endl;
-	cpt++;
+	std::cout << "Construction done successfuly." << std::endl;
 }
 
-
+// constructor with a char-array pointor
 Chaine::Chaine(const char * c)
 {
 	int length = 0;
 	int i = 0;
 
-	// counts string length
+	// counts array length
 	while (*(c+length) != '\0')
 	{
 		length++;
@@ -28,17 +27,15 @@ Chaine::Chaine(const char * c)
 	// allocs memory
 	tank = new char[length + 1];
 
-	// copy the characters
+	// copys the characters
 	for (i = 0; i < length+1; i++)
 	{
 		tank[i] = *(c + i);
 	}
-
-	std::cout << "Construction of chaine number " << cpt << " done successfuly " << std::endl;
-	cpt++;
+	std::cout << "Construction done successfuly." << std::endl;
 }
 
-
+// constructor by reference
 Chaine::Chaine(const Chaine &c)
 {
 	int length = 0;
@@ -54,25 +51,62 @@ Chaine::Chaine(const Chaine &c)
 	tank = new char[length + 1];
 
 	// copy the characters
-	for (i = 0; i < length; i++)
+	for (i = 0; i < length+1; i++)
 	{
 		tank[i] = c.tank[i];
 	}
 
-	std::cout << "Construction of chaine done successfuly ( " << cpt << " in memory )" << std::endl;
-	cpt++;
+	std::cout << "Construction done successfuly." << std::endl;
 }
 
 
+// destructor
+Chaine::~Chaine()
+{
+	delete this->tank;
+	std::cout << "Destruction done successfuly." << std::endl;
+}
+
+
+// displays the Chaine
 void Chaine::display()
 {
 	std::cout << this->tank << std::endl;
 }
 
-Chaine::~Chaine()
+
+// returns the character at position p
+char Chaine::charAt(int p)
 {
-	delete this->tank;
-	std::cout << "Destruction of chaine done successfuly ( " << cpt << " in memory )" << std::endl;
-	cpt--;
+	return this->tank[p];
 }
+
+// returns the length
+int Chaine::length()
+{
+	int length = 0;
+	while (this->tank[length] != '\0')
+	{
+		length++;
+	}
+	return length;
+}
+
+// true if equivalent
+bool Chaine::isEquivalentTo(Chaine &c)
+{
+	if (this->length() != c.length())
+	{
+		return false;
+	}
+
+	bool resul = true;
+	int i = 0;
+	for (i = 0; i < this->length() && resul; i++)
+	{
+		resul = this->charAt(i) == c.charAt(i);
+	}
+	return resul;
+}
+
 
