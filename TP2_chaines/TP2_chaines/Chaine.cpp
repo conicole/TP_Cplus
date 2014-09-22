@@ -3,6 +3,7 @@
 #include <cstdlib>
 
 
+
 // empty constructor
 Chaine::Chaine()
 {
@@ -93,9 +94,9 @@ int Chaine::length()
 }
 
 // true if equivalent
-bool operator==(Chaine &c1, Chaine &c2)
+bool Chaine::operator==(Chaine &c1)
 {
-	if (c1.length() != c2.length())
+	if ( c1.length() != this->length() )
 	{
 		return false;
 	}
@@ -104,93 +105,100 @@ bool operator==(Chaine &c1, Chaine &c2)
 	int i = 0;
 	for (i = 0; i < c1.length() && resul; i++)
 	{
-		resul = c1.charAt(i) == c2.charAt(i);
+		resul = c1.charAt(i) == this->charAt(i);
 	}
 	return resul;
 }
 
 
-bool operator>(Chaine &c1, Chaine &c2)
+bool Chaine::operator>(Chaine &c1)
 {
 	int i = 0;
-	int shortestLength = minl(c1.length(), c2.length());
+	int shortestLength = fmin(c1.length(), this->length());
 	
 	for (i = 0; i<shortestLength ; i++)
 	{
-		if (c1.charAt(i) > c2.charAt(i))
+		if (c1.charAt(i) > this->charAt(i))
 		{
 			return true;
 		}
-		if (c2.charAt(i) < c2.charAt(i))
+		if (this->charAt(i) < this->charAt(i))
 		{
 			return false;
 		}
 	}
 	
-	return c1.length() > c2.length();
+	return c1.length() > this->length();
 }
 
-bool operator<(Chaine &c1, Chaine &c2)
+// compare par ordre alphabetique.
+bool Chaine::operator<(Chaine &c1)
 {
 	int i = 0;
-	int shortestLength = minl(c1.length(), c2.length());
+	int shortestLength = fmin(c1.length(), this->length());
 	
 	for (i = 0; i<shortestLength ; i++)
 	{
-		if (c1.charAt(i) < c2.charAt(i))
+		if (this->charAt(i) < c1.charAt(i))
 		{
 			return true;
 		}
-		if (c2.charAt(i) > c2.charAt(i))
+		if (this->charAt(i) > c1.charAt(i))
 		{
 			return false;
 		}
 	}
 	
-	return c1.length() < c2.length();
+	return c1.length() < this->length();
 }
 
-bool operator<=(Chaine &c1, Chaine &c2)
+bool Chaine::operator<=(Chaine &c1)
 {
-	return ! (c1 > c2);
+	return ! (*this > c1);
 }
 
-bool operator>=(Chaine &c1, Chaine &c2)
+bool Chaine::operator>=(Chaine &c1)
 {
-	return ! (c1 < c2);
+	return ! (*this < c1);
 }
 
-bool operator!=(Chaine &c1, Chaine &c2)
+bool Chaine::operator!=(Chaine &c1)
 {
-	if (c1.length() != c2.length())
+	if (c1.length() != this->length())
 	{
 		return true;
 	}
 	
-	return !(c1==c2);
+	return !(c1==*this);
 }
 
-Chaine operator+(Chaine &c1, Chaine &c2)
+Chaine& Chaine::operator+(Chaine &c1)
 {
-	char[] concatened = new char[c1.length() + c2.length() +1];
+	char * concatened  = new char[c1.length() + this->length() +1];
 	
 	int i = 0;
-	while (c1.charAt(i) != '\0')
+	while (this->charAt(i) != '\0')
 	{
-		concatened[i] = c1.charAt(i) ;
+		concatened[i] = this->charAt(i) ;
 		i++;
 	}
 	
 	i = 0;
-	while (c2.charAt(i) != '\0')
+	while (c1.charAt(i) != '\0')
 	{
-		concatened[i] = c2.charAt(i - c1.length()) ;
+		concatened[i] = this->charAt(i - c1.length()) ;
 		i++;
 	}
 	
 	concatened[++i] = '\0';
-		
-	return new Chaine(concatened)
+
+	const char * res = concatened;
+
+
+	Chaine * cres = new Chaine(res);
+
+
+	return *cres;
 }
 
 

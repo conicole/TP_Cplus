@@ -1,7 +1,6 @@
 #include <cstdlib>
 
 
-
 class Chaine
 {
 	char * tank;
@@ -25,6 +24,20 @@ public:
 	char charAt(int p);
 
 	// returns length
-	int Chaine::length();
+	int length();
 
+	bool operator==(Chaine &c1);
+
+	bool operator>(Chaine &c1);
+
+	bool operator<(Chaine &c1);
+
+	bool operator<=(Chaine &c1);
+
+	bool operator>=(Chaine &c1);
+
+	Chaine& operator+(Chaine &c1);
+
+	bool operator!=(Chaine &c1);
 };
+

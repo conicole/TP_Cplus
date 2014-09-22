@@ -40,7 +40,10 @@ int main()
 
 	ptr->display();
 	ptr2->display();
-	std::cout << "are equivalent : " << ptr->isEquivalentTo(*ptr2) << std::endl;
+	
+	Chaine const &refptr = *ptr;
+	Chaine const &refptr2 = *ptr2;
+	std::cout << "are equivalent : " << ( refptr == refptr2 ) << std::endl;
 
 	delete ptr;
 	delete emptyPtr;
