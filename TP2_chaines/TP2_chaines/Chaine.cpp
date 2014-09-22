@@ -186,7 +186,7 @@ Chaine& Chaine::operator+(Chaine &c1)
 	i = 0;
 	while (c1.charAt(i) != '\0')
 	{
-		concatened[i] = this->charAt(i - c1.length()) ;
+		concatened[i] = c1.charAt(i - this->length()) ;
 		i++;
 	}
 	

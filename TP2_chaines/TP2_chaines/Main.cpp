@@ -41,8 +41,8 @@ int main()
 	ptr->display();
 	ptr2->display();
 	
-	Chaine const &refptr = *ptr;
-	Chaine const &refptr2 = *ptr2;
+	Chaine  &refptr = *ptr;
+	Chaine  &refptr2 = *ptr2;
 	std::cout << "are equivalent : " << ( refptr == refptr2 ) << std::endl;
 
 	delete ptr;
