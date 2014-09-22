@@ -1,4 +1,6 @@
 /**
+*\file Main.cpp
+*\author Esmieu Valentin Nicole Corentin
 *
 */
 
@@ -6,6 +8,9 @@
 #include <iostream>
 #include <cstdlib>
 
+/*
+* main function
+*/
 int main()
 {
 	std::cout << "Please write something (just alphanumeric characters)" << std::endl;
@@ -44,6 +49,7 @@ int main()
 	Chaine  &refptr = *ptr;
 	Chaine  &refptr2 = *ptr2;
 	std::cout << "are equivalent : " << ( refptr == refptr2 ) << std::endl;
+	std::cout << "first comes before second : " << (refptr < refptr2) << std::endl;
 
 	delete ptr;
 	delete emptyPtr;

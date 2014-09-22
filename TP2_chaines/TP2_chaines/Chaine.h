@@ -1,3 +1,9 @@
+/**
+*\file Chaine.h
+*\author Esmieu Valentin Nicole Corentin
+*
+*/
+
 #include <cstdlib>
 
 
@@ -9,35 +15,50 @@ class Chaine
 
 public:
 
-	// constructors
-	Chaine();					
-	Chaine(const char* c);		
+	/*
+	* empty constructor
+	*/
+	Chaine();	
+
+	/*
+	* constructor with a char-array pointor
+	*/
+	Chaine(const char* c);
+
+	/*
+	* constructor by reference
+	*/
 	Chaine(const Chaine& c);
 
-	// toString
+	/*
+	* displayer
+	*/
 	void display();
 
-	// destructor
+	/*
+	* destuctor
+	*/
 	~Chaine();
 
-	// returns char at
+	/*
+	* return the character at position p
+	*/
 	char charAt(int p);
 
-	// returns length
+	/*
+	* return the Chaine length
+	*/
 	int length();
 
+	/*
+	* empty constructor
+	*/
 	bool operator==(Chaine &c1);
-
 	bool operator>(Chaine &c1);
-
 	bool operator<(Chaine &c1);
-
 	bool operator<=(Chaine &c1);
-
 	bool operator>=(Chaine &c1);
-
 	Chaine& operator+(Chaine &c1);
-
 	bool operator!=(Chaine &c1);
 };
 

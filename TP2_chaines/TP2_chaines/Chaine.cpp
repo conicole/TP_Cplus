@@ -1,10 +1,17 @@
+/**
+*\file Chaine.cpp
+*\author Esmieu Valentin Nicole Corentin
+*
+*/
+
 #include "Chaine.h"
 #include <iostream>
 #include <cstdlib>
 
 
-
-// empty constructor
+/*
+* empty constructor
+*/
 Chaine::Chaine()
 {
 	tank = new char[1];
@@ -35,6 +42,7 @@ Chaine::Chaine(const char * c)
 	}
 	std::cout << "Construction done successfuly." << std::endl;
 }
+
 
 // constructor by reference
 Chaine::Chaine(const Chaine &c)
@@ -93,7 +101,7 @@ int Chaine::length()
 	return length;
 }
 
-// true if equivalent
+// true if Chaines are equivalent
 bool Chaine::operator==(Chaine &c1)
 {
 	if ( c1.length() != this->length() )
@@ -110,7 +118,7 @@ bool Chaine::operator==(Chaine &c1)
 	return resul;
 }
 
-
+// true if the Chaine (this) comes after the other Chaine (c1) in alphabetic order
 bool Chaine::operator>(Chaine &c1)
 {
 	int i = 0;
@@ -131,7 +139,7 @@ bool Chaine::operator>(Chaine &c1)
 	return c1.length() > this->length();
 }
 
-// compare par ordre alphabetique.
+// true if it comes before c1
 bool Chaine::operator<(Chaine &c1)
 {
 	int i = 0;
@@ -152,16 +160,19 @@ bool Chaine::operator<(Chaine &c1)
 	return c1.length() < this->length();
 }
 
+// true if it becomes before or is equal
 bool Chaine::operator<=(Chaine &c1)
 {
 	return ! (*this > c1);
 }
 
+// true if it becomes after or is equal
 bool Chaine::operator>=(Chaine &c1)
 {
 	return ! (*this < c1);
 }
 
+// true if the two Chaine are different
 bool Chaine::operator!=(Chaine &c1)
 {
 	if (c1.length() != this->length())
@@ -172,6 +183,7 @@ bool Chaine::operator!=(Chaine &c1)
 	return !(c1==*this);
 }
 
+// concatenate the two Chaines
 Chaine& Chaine::operator+(Chaine &c1)
 {
 	char * concatened  = new char[c1.length() + this->length() +1];
