@@ -80,9 +80,12 @@
   <ItemGroup>
     <ClCompile Include="Fraction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ZeroDenominatorException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="DivideByZero.h" />
+    <ClInclude Include="ZeroDenominatorException.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
