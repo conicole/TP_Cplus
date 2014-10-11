@@ -1,5 +1,23 @@
 #include "Fraction.h"
 
+
+
+int safeAdd(int i1, int i2){
+	if (imax - i1 < i2){
+		throw OverflowException();
+	}
+	return i1 + i2;
+}
+
+int safeMull(int i1, int i2){
+	if (imax / i2 < i1){  // i2 must not be equal to zero (denom)
+		throw OverflowException();
+	}
+	return i1*i2;
+}
+
+
+
 Fraction::Fraction(int i) : num(i), denom(1) 
 {
 	this->simplify();
@@ -14,15 +32,17 @@ Fraction::Fraction(int n, int d) : num(n), denom(d)
 	this->simplify();
 }
 
+
 Fraction Fraction::operator+(Fraction &fract)
 {
-	int resNum = this->num*fract.denom + this->denom * fract.num;
-	int resDenom = this->denom*fract.denom;
+	int resNum = safeAdd(safeMull(this->num,fract.denom),safeMull(this->denom,fract.num));
+	int resDenom = safeMull(this->denom,fract.denom);
 	Fraction resulFract(resNum, resDenom);
 	resulFract.simplify();
 
 	return resulFract;
 }
+
 
 Fraction Fraction::operator-(Fraction &fract)
 {
@@ -36,8 +56,8 @@ Fraction Fraction::operator-(Fraction &fract)
 
 Fraction Fraction::operator*(Fraction &fract)
 {
-	int resNum = this->num*fract.num;
-	int resDenom = this->denom*fract.denom;
+	int resNum = safeMull(this->num,fract.num);
+	int resDenom = safeMull(this->denom,fract.denom);
 	Fraction resulFract(resNum, resDenom);
 	resulFract.simplify();
 
@@ -49,8 +69,8 @@ Fraction Fraction::operator/(Fraction &fract)
 	if (fract.num == 0){
 		throw DivideByZero();
 	}
-	int resNum = this->num*fract.denom;
-	int resDenom = this->denom*fract.num;
+	int resNum = safeMull(this->num,fract.denom);
+	int resDenom = safeMull(this->denom,fract.num);
 	Fraction resulFract(resNum, resDenom);
 	resulFract.simplify();
 

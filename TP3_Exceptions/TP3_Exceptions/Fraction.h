@@ -3,6 +3,12 @@
 #include <string>   // pour std::string 
 #include "ZeroDenominatorException.h"
 #include "DivideByZero.h"
+#include "OverflowException.h"
+
+
+const int imin = std::numeric_limits<int>::min(); // minimum value
+const int imax = std::numeric_limits<int>::max(); // max value
+
 
 using namespace std;
 class Fraction
