@@ -1,17 +1,28 @@
+/**
+ *
+ * \file fraction.cpp
+ * \brief classe object fraction
+ * \author Nicole Corentin, Esmieu Valentin
+ * \version 0.1
+ * \date 12/10/2014
+ */
+
 #include "Fraction.h"
+
+
 
 
 
 int safeAdd(int i1, int i2){
 	if (imax - i1 < i2){
-		throw OverflowException();
+		throw OverflowException('a',i1,i2);
 	}
 	return i1 + i2;
 }
 
 int safeMull(int i1, int i2){
 	if (imax / i2 < i1){  // i2 must not be equal to zero (denom)
-		throw OverflowException();
+		throw OverflowException('m',i1,i2);
 	}
 	return i1*i2;
 }
@@ -27,7 +38,7 @@ Fraction::Fraction(int n, int d) : num(n), denom(d)
 {
 	if (d == 0)
 	{
-		throw ZeroDenominatorException();
+		throw ZeroDenominatorException(n,d);
 	}
 	this->simplify();
 }
@@ -67,7 +78,7 @@ Fraction Fraction::operator*(Fraction &fract)
 Fraction Fraction::operator/(Fraction &fract)
 {
 	if (fract.num == 0){
-		throw DivideByZero();
+		throw DivideByZero(*this,fract);
 	}
 	int resNum = safeMull(this->num,fract.denom);
 	int resDenom = safeMull(this->denom,fract.num);

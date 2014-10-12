@@ -21,30 +21,30 @@ int main()
 	{
 		Fraction fZero(20,0);
 	}
-	catch (ZeroDenominatorException e)
+	catch (ZeroDenominatorException & e)
 	{
-		cout << "Error : you can't define a fraction with 0 as denominator." << std::endl;
+		cout << e.what() << endl;
 	}
 	
 	try
 	{
 		f1 / fzero;
 	}
-	catch (DivideByZero e)
+	catch (DivideByZero & e)
 	{
-		cout << "Error : you can't divide by zero !" << std::endl;
+		cout << e.what() << endl;
 
 	}
 
 	try
 	{
-		Fraction fmull = fmax + fmax;
+		Fraction fmull = fmax * fmax;
 		cout << fmull.display() << endl;
 	}
-
-	catch (OverflowException e){
-		cout << "Error : overflow !" << std::endl;
+	catch (OverflowException & e){
+		cout << e.what() << endl;
 	}
+
 
 	return 0;
 }

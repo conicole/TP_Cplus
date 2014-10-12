@@ -1,5 +1,0 @@
-#include <exception>
-
-class OverflowException
-{
-};
