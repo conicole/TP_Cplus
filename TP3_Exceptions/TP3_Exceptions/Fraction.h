@@ -67,8 +67,7 @@ public:
 };
 
 
-
-// Fonction exception declare here -> problem with include.  #TOFIX !
+// Fonction exception declare here -> problem with include.  -> Circular Dependencies.
 
 class DivideByZero : public std::exception
 {
