@@ -1,8 +1,8 @@
 /*!
 * \file  sequences.h
 * \brief  Sequences reading
-* \date to be updated
-* \author to be updated
+* \date 12/10/2014
+* \author Corentin Nicole & Valentin Esmieu
 * Read new nucleotide or protein sequences
 */
 
@@ -12,6 +12,7 @@
 #include <set>
 #include <string>
 #include <iostream>
+#include "AlphabetException.cpp"
 
 /*! \brief Alphabet class. Used to validate a character against an alphabet. */
 class alpha

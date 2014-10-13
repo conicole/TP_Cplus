@@ -22,12 +22,18 @@ _alph(alphabet), _name(name)
 	for (string::const_iterator c = seq.begin(); c != seq.end(); c++)
 	{
 		if (_alph.is_in_alpha(*c)) { s += *c; }
+		else
+		{
+			throw AlphabetException(*c, seq);
+		//	return;
+		}
 	}
 	_seq = s;
 }
 
 seqadn::seqadn(const string & seq, const string & name) : seqmac(seq, name, "CGAT")
 {
+
 }
 
 seqarn::seqarn(const string & seq, const string & name) : seqmac(seq, name, "ACGU")

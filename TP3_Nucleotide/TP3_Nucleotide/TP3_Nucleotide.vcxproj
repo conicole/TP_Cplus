@@ -78,11 +78,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sequence.cpp" />
+    <ClCompile Include="AlphabetException.cpp" />
+    <ClCompile Include="Sequences.cpp" />
     <ClCompile Include="seq_main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sequence.h" />
+    <ClInclude Include="Sequences.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
