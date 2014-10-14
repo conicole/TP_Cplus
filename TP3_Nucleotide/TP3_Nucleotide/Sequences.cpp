@@ -1,8 +1,8 @@
 /*!
 * \file  sequences.cpp
 * \brief  Sequences reading
-* \date to be updated
-* \author to be updated
+* \date 10/10/2014
+* \author Corentin Nicole & Valentin Esmieu
 */
 
 #include "sequences.h"

@@ -11,10 +11,23 @@ using namespace std;
 
 int main()
 {
+	string adnLetters("ACGT");
+	string arnLetters("ACGU");
+	string protLetters("ACDEFGHIKLMNPQRSTV");
+	string startCodon("ATG");
+	string stopCodon1("TAA");
+	string stopCodon2("TAG");
+	string stopCodon3("TGA");
+
+	cout << "Lettres valides pour une séquence d'ADN : " << adnLetters << endl;
+	cout << "Lettres valides pour une séquence d'ARN : " << arnLetters << endl;
+	cout << "Lettres valides pour une séquence de protéines : " << protLetters << endl;
+	cout << "(Rappel) Codon START : " <<startCodon << endl;
+	cout << "(Rappel) Codons STOP : " << stopCodon1 << ", " << stopCodon2 << ", " << stopCodon3 << endl;
+
 	string s1, s2, s3;
 
-
-	cout << "Entrez une sequence proteique: ";
+	cout << "Entrez une sequence proteique (pensez aux majuscules) : ";
 	cin >> s1;
 	cout << "Entrez son nom: ";
 	cin >> s2;
@@ -29,7 +42,6 @@ int main()
 		cout << e.what() << endl;
 	}
 
-	
 
 	cout << "Entrez une sequence d'adn: ";
 	cin >> s1;
@@ -62,6 +74,6 @@ int main()
 		cout << e.what() << endl;
 	}
 
-	return 0;
+return 0;
 
 }

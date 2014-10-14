@@ -29,7 +29,6 @@ public:
 
 	virtual ~AlphabetException() throw()
 	{
-
 	}
 
 	virtual const char * what() const throw()  // don't throw exception.
