@@ -8,19 +8,21 @@
  */
 
 #include "Fraction.h"
+#include "ZeroDenominatorException.cpp"
+#include "DivideByZero.cpp"
+#include "OverflowException.cpp"
 
 
-
-
-
-int safeAdd(int i1, int i2){
+int Fraction::safeAdd(int i1, int i2)
+{
 	if (imax - i1 < i2){
 		throw OverflowException('a',i1,i2);
 	}
 	return i1 + i2;
 }
 
-int safeMull(int i1, int i2){
+int Fraction::safeMull(int i1, int i2)
+{
 	if (imax / i2 < i1){  // i2 must not be equal to zero (denom)
 		throw OverflowException('m',i1,i2);
 	}
@@ -77,8 +79,9 @@ Fraction Fraction::operator*(Fraction &fract)
 
 Fraction Fraction::operator/(Fraction &fract)
 {
-	if (fract.num == 0){
-		throw DivideByZero(*this,fract);
+	if (fract.num == 0)
+	{
+		throw DivideByZero();
 	}
 	int resNum = safeMull(this->num,fract.denom);
 	int resDenom = safeMull(this->denom,fract.num);
@@ -91,7 +94,8 @@ Fraction Fraction::operator/(Fraction &fract)
 
 void Fraction::simplify()
 {
-	if (this->num == 0){
+	if (this->num == 0)
+	{
 		return;
 	}
 	// PGCD calcul

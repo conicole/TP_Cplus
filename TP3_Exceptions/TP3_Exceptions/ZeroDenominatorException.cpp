@@ -22,7 +22,7 @@ public:
 	ZeroDenominatorException(int i1,int i2)
 	{
 		std::ostringstream oss;
-		oss << "Error : can't create the fraction : " << i1 << "/"<< i2 << " denominator must be not equal to zero" ;
+		oss << "Error : can't create the fraction : " << i1 << "/" << i2 << " because denominator must not be equal to zero";
 		this->msg = oss.str();
 	}
 

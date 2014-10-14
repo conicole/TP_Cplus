@@ -11,9 +11,6 @@
 
 #include <iostream> // pour std::cout 
 #include <string>   // pour std::string 
-#include "ZeroDenominatorException.cpp"
-#include "OverflowException.cpp"
-//#include "DivideByZero.cpp"
 
 
 const int imin = std::numeric_limits<int>::min(); // minimum value
@@ -23,9 +20,9 @@ const int imax = std::numeric_limits<int>::max(); // max value
 using namespace std;
 class Fraction
 {
-
 	int num;
 	int denom;
+
 public:
 
 	/**
@@ -39,15 +36,30 @@ public:
 	* \fn  Fraction(int n, int d);
 	* \brief constructor with given parameters.
 	* \param[in] integer n as nominator
-	* \param[in] integer d as denominator, must be not equal to 0.
+	* \param[in] integer d as denominator, must not be equal to 0.
 	*/
 	Fraction(int n, int d);
 	
-	// redifinition of operators
+	/**
+	* \brief safe operations
+	* \param[in] int as operand
+	* \param[in] int as operand
+	* \param[out] int as result
+	*/
+	int safeAdd(int i1, int i2);
+	int safeMull(int i1, int i2);
+	
+
+	/**
+	* \brief redifinition of operators
+	* \param[in] Fraction fract as operand
+	* \param[out] Fraction as result of the operation
+	*/
 	Fraction operator+(Fraction &fract);
 	Fraction operator-(Fraction &fract);
 	Fraction operator*(Fraction &fract);
 	Fraction operator/(Fraction &fract);
+
 
 	/**
 	* \fn  simplify
@@ -69,28 +81,3 @@ public:
 
 // Fonction exception declare here -> problem with include.  -> Circular Dependencies.
 
-class DivideByZero : public std::exception
-{
-
-private:
-	std::string msg;
-
-public:
-	DivideByZero(Fraction f1, Fraction f2)
-	{
-		std::ostringstream oss;
-		oss << "Error : the division of the fraction : " << f1.display() << " by " << f2.display() << " causes a division by zero ";
-		this->msg = oss.str();
-	}
-
-	virtual ~DivideByZero() throw()
-	{
-
-	}
-
-	virtual const char * what() const throw()  // don't throw exception.
-	{
-		return this->msg.c_str();
-	}
-
-};

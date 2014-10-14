@@ -1,5 +1,7 @@
 #include "Fraction.h"
-
+#include "DivideByZero.cpp"
+#include "ZeroDenominatorException.cpp"
+#include "OverflowException.cpp"
 
 int main()
 {
@@ -21,7 +23,7 @@ int main()
 	{
 		Fraction fZero(20,0);
 	}
-	catch (ZeroDenominatorException & e)
+	catch (ZeroDenominatorException const& e)
 	{
 		cout << e.what() << endl;
 	}
@@ -30,10 +32,9 @@ int main()
 	{
 		f1 / fzero;
 	}
-	catch (DivideByZero & e)
+	catch (DivideByZero const& e)
 	{
 		cout << e.what() << endl;
-
 	}
 
 	try
@@ -41,7 +42,7 @@ int main()
 		Fraction fmull = fmax * fmax;
 		cout << fmull.display() << endl;
 	}
-	catch (OverflowException & e){
+	catch (OverflowException const& e){
 		cout << e.what() << endl;
 	}
 
