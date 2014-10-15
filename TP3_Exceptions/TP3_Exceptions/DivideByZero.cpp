@@ -1,5 +1,6 @@
 #include <iostream> // pour std::cout 
 
+
 class DivideByZero : public std::exception
 {
 
