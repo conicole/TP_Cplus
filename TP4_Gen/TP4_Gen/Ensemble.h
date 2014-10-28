@@ -9,14 +9,17 @@ private:
 
 
 public:
+
+	// empty constructor
 	Ensemble<T>()
 	{
 	 _listref = List<T>();
 	}
 
+	// constructor
 	Ensemble<T>(const List<T>& lref)
 	{
-		List<T> ltemp();
+		List<T> ltemp;
 		ListIterator<T> it = lref.beg();
 		while (!it.finished())
 		{
@@ -27,6 +30,21 @@ public:
 			it++;
 		}
 	}
+
+
+	// getter
+	// please observe that "const" is required
+	List<T> getList() const
+	{
+		return this->_listref;
+	}
+
+	// setter
+	void setList(std::istream& in)
+	{
+		in >> this->_listref;
+	}
+
 
 
 	Ensemble<T> operator+(const Ensemble<T>& e) const
@@ -51,15 +69,16 @@ public:
 
 };
 
+
 template <class T>
-std::istream& operator>>(std::istream& in, Ensemble<T>& eref) 
+void operator>>(std::istream& in, Ensemble<T>& eref) 
 {
-	eref._listref >> in;
+	eref.setList(in);
 }
+
 
 template <class T>
 std::ostream& operator<<(std::ostream& out, const Ensemble<T>& eref)
 {
-	out << eref->_listref;
+	return out << eref.getList();
 }
-

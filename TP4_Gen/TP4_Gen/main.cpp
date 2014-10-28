@@ -42,6 +42,10 @@ int main() {
 	Ensemble<int> e1 = lire("test1.txt");
 	Ensemble<int> e2 = lire("test2.txt");
 
+	List<int> test;
+	// List<int> test(); ça déclare une fonction qui ne prend rien et renvoie une List<int>.....
+	Ensemble<int> ensemble(test);
+
 	// Affichage des ensembles
 	std::cout << "e1 = " << e1 << std::endl;
 	std::cout << "e2 = " << e2 << std::endl;
@@ -51,5 +55,6 @@ int main() {
 	std::cout << "Intersection :: " << (e1 * e2)<< std::endl;
 	std::cout << "Soustraction :: " << (e1 - e2)<< std::endl;
 	std::cout << "Difference   :: "   << (e1 / e2)<< std::endl;
+
 	return 0;
 }
