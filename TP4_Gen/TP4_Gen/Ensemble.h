@@ -16,7 +16,7 @@ public:
 	 _listref = List<T>();
 	}
 
-	// constructor
+	// constructor by ref
 	Ensemble<T>(const List<T>& lref)
 	{
 		List<T> ltemp;
@@ -29,39 +29,52 @@ public:
 			}
 			it++;
 		}
+		_listref = ltemp;
 	}
-
+	
 
 	// getter
-	// please observe that "const" is required
+	// "const" is required !
 	List<T> getList() const
 	{
 		return this->_listref;
 	}
 
-	// setter
-	void setList(std::istream& in)
+	//add element
+	void add(const T& elt)
 	{
-		in >> this->_listref;
+		// if (!(this->_listref == elt))    <- si vrai ça crashe
+		// this->_listref.addElement(elt);	<- crashe sur certains éléments
+				
 	}
 
-
-
+	// ne fonctionne pas (car dépend de add)
 	Ensemble<T> operator+(const Ensemble<T>& e) const
 	{
-		return Ensemble();
+		Ensemble<T> theUnion (this->getList());
+		ListIterator<T> it = e.getList().beg();
+		while (!it.finished())
+		{
+			theUnion.add(it.get());
+			it++;
+		}
+		return theUnion;
+
 	}
 
+	// to do
 	Ensemble<T> operator-(const Ensemble<T>& e) const
 	{
 		return Ensemble();
 	}
 
+	// to do
 	Ensemble<T> operator*(const Ensemble<T>& e) const
 	{
 		return Ensemble();
 	}
 
+	// to do
 	Ensemble<T> operator/(const Ensemble<T>& e) const
 	{
 		return Ensemble();
@@ -70,15 +83,23 @@ public:
 };
 
 
+// opérateur d'assignation
 template <class T>
-void operator>>(std::istream& in, Ensemble<T>& eref) 
-{
-	eref.setList(in);
+std::istream& operator>>(std::istream& in, Ensemble<T>& eref) {
+	int nb;
+	in >> nb;
+	for (int i = 0; i < nb; i++) {
+		T tmp;
+		in >> tmp;
+		eref.add(tmp);
+	}
+	return in;
 }
 
 
+// opérateur d'affichage
 template <class T>
-std::ostream& operator<<(std::ostream& out, const Ensemble<T>& eref)
-{
-	return out << eref.getList();
+std::ostream& operator<<(std::ostream& out, const Ensemble<T>& eref) {
+	out << eref.getList() ;
+	return out;
 }
